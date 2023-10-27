@@ -34,15 +34,13 @@ public class FormTests {
         $(".react-datepicker__year-select").click();
         $(byValue("1994")).click();
         $(".react-datepicker__day--030").click();
-        $("#subjectsContainer").click();
         $("#subjectsInput").val("Physics").pressEnter();
         $("[for='hobbies-checkbox-1']").click();
         $("[for='hobbies-checkbox-2']").click();
         $("[for='hobbies-checkbox-3']").click();
         $("#uploadPicture").uploadFile(new File("src/test/data/picture.png"));
         $("#currentAddress").setValue("Some address");
-        $("#state").scrollTo();
-        $("#state").click();
+        $("#state").scrollTo().click();
         $("#react-select-3-input").val("Haryana").pressEnter();
         $("#city").click();
         $("#react-select-4-input").val("Karnal").pressEnter().pressTab().pressEnter();
