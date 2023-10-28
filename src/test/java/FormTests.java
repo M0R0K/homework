@@ -1,10 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -21,7 +17,6 @@ public class FormTests {
         @Test
         void fillFormTest() {
         open("/automation-practice-form");
-
         //заполнение полей
         $("#firstName").setValue("Konstantin");
         $("#lastName").setValue("Ponomarenko");
@@ -38,7 +33,7 @@ public class FormTests {
         $("[for='hobbies-checkbox-1']").click();
         $("[for='hobbies-checkbox-2']").click();
         $("[for='hobbies-checkbox-3']").click();
-        $("#uploadPicture").uploadFile(new File("src/test/data/picture.png"));
+        $("#uploadPicture").uploadFromClasspath("picture.png");
         $("#currentAddress").setValue("Some address");
         $("#state").scrollTo().click();
         $("#react-select-3-input").val("Haryana").pressEnter();
