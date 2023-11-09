@@ -1,5 +1,6 @@
 package tests;
 
+import data.TestData;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -7,51 +8,64 @@ import pages.RegistrationPage;
 public class RegistrationFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-
+    TestData data = new TestData();
+    String studentNameTableColumn = "Student Name";
+    String studentEmailTableColumn = "Student Email";
+    String studentGenderTableColumn = "Gender";
+    String studentMobileTableColumn = "Mobile";
+    String studentBirthTableColumn = "Date of Birth";
+    String studentSubjectsTableColumn = "Subjects";
+    String studentHobbiesTableColumn  = "Hobbies";
+    String studentAddressTableColumn = "Address";
+    String studentStateCityTableColumn = "State and City";
+    String studentPictureTableColumn = "Picture";
+    String picturePath = "picture.png";
     @Test
     void fillFormTest() {
-
-
         registrationPage.openPage()
-                .setFirstName("Konstantin")
-                .setLastName("Ponomarenko")
-                .setEmail("konstantin@mailinator.com")
-                .setGender("Other")
-                .setUserNumber("79999999999")
-                .setDateOfBirth("30", "November", "1994")
-                .setSubjects("Maths")
-                .setHobbie("Sports")
-                .downloadImage("picture.png")
-                .setAddress("Some address")
-                .choiceStateAndCity("Haryana", "Karnal")
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setEmail(data.email)
+                .setGender(data.gender)
+                .setUserNumber(data.phoneNumber)
+                .setDateOfBirth(data.dayBirth, data.monthBirth, data.yearBirth)
+                .setSubjects(data.subjects)
+                .setHobbie(data.hobbies)
+                .downloadImage(picturePath)
+                .setAddress(data.address)
+                .choiceStateAndCity(data.state, data.city)
                 .sendForm()
-                .checkResult("Student Name", "Konstantin Ponomarenko")
-                .checkResult("Student Email", "konstantin@mailinator.com")
-                .checkResult("Gender", "Other")
-                .checkResult("Mobile", "7999999999")
-                .checkResult("Date of Birth", "30 November,1994")
-                .checkResult("Subjects", "Maths")
-                .checkResult("Hobbies", "Sports")
-                .checkResult("Picture", "picture.png")
-                .checkResult("Address", "Some address")
-                .checkResult("State and City", "Haryana Karnal");
+                .checkResult(studentNameTableColumn, data.firstName)
+                .checkResult(studentNameTableColumn, data.lastName)
+                .checkResult(studentEmailTableColumn, data.email)
+                .checkResult(studentGenderTableColumn, data.gender)
+                .checkResult(studentMobileTableColumn, data.phoneNumber)
+                .checkResult(studentBirthTableColumn, data.yearBirth)
+                .checkResult(studentBirthTableColumn, data.monthBirth)
+                .checkResult(studentBirthTableColumn, data.dayBirth)
+                .checkResult(studentSubjectsTableColumn, data.subjects)
+                .checkResult(studentHobbiesTableColumn, data.hobbies)
+                .checkResult(studentPictureTableColumn, picturePath)
+                .checkResult(studentAddressTableColumn, data.address)
+                .checkResult(studentStateCityTableColumn, data.state)
+                .checkResult(studentStateCityTableColumn, data.city);
 
     }
 
     @Test
     void inputMinimumData() {
         registrationPage.openPage()
-                .setFirstName("Kostya")
-                .setLastName("Ponomarenko")
-                .setGender("Male")
-                .setUserNumber("7999999999")
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setGender(data.gender)
+                .setUserNumber(data.phoneNumber)
                 .sendForm()
-                .checkResult("Student Name", "Kostya Ponomarenko")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "7999999999");
+                .checkResult(studentNameTableColumn, data.firstName)
+                .checkResult(studentNameTableColumn, data.lastName)
+                .checkResult(studentGenderTableColumn, data.gender)
+                .checkResult(studentMobileTableColumn, data.phoneNumber);
 
     }
-
 
     @Test
     void negativeScenario() {
