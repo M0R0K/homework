@@ -25,9 +25,6 @@ public class RegistrationPage {
     tableClass = $(".table-responsive");
 
 
-
-
-
     CalendarComponent calendarComponent = new CalendarComponent();
 
     public RegistrationPage openPage() {

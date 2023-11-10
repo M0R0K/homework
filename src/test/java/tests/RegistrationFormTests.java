@@ -15,11 +15,12 @@ public class RegistrationFormTests extends TestBase {
     String studentMobileTableColumn = "Mobile";
     String studentBirthTableColumn = "Date of Birth";
     String studentSubjectsTableColumn = "Subjects";
-    String studentHobbiesTableColumn  = "Hobbies";
+    String studentHobbiesTableColumn = "Hobbies";
     String studentAddressTableColumn = "Address";
     String studentStateCityTableColumn = "State and City";
     String studentPictureTableColumn = "Picture";
     String picturePath = "picture.png";
+
     @Test
     void fillFormTest() {
         registrationPage.openPage()
@@ -64,7 +65,6 @@ public class RegistrationFormTests extends TestBase {
                 .checkResult(studentNameTableColumn, data.lastName)
                 .checkResult(studentGenderTableColumn, data.gender)
                 .checkResult(studentMobileTableColumn, data.phoneNumber);
-
     }
 
     @Test
@@ -72,7 +72,6 @@ public class RegistrationFormTests extends TestBase {
         registrationPage.openPage()
                 .sendForm()
                 .checkTableHidden();
-
     }
 }
 
