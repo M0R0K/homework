@@ -1,6 +1,7 @@
 package tests;
 
 import data.TestData;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -22,6 +23,7 @@ public class RegistrationFormTests extends TestBase {
     String picturePath = "picture.png";
 
     @Test
+    @Tag("remote-tests")
     void fillFormTest() {
         registrationPage.openPage()
                 .setFirstName(data.firstName)
@@ -54,6 +56,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @Tag("remote-tests")
     void inputMinimumData() {
         registrationPage.openPage()
                 .setFirstName(data.firstName)
@@ -68,6 +71,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @Tag("remote-tests")
     void negativeScenario() {
         registrationPage.openPage()
                 .sendForm()

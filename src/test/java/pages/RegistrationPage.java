@@ -11,16 +11,20 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
-    private SelenideElement firstNameInput = $("#firstName"), lastNameInput = $("#lastName"), userEmailInput = $("#userEmail"), genderWrapper = $("#genterWrapper"), userNumberInput = $("#userNumber"), calendarInput = $("#dateOfBirthInput"),
+    private SelenideElement firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
+            userEmailInput = $("#userEmail"),
+            genderWrapper = $("#genterWrapper"),
+            userNumberInput = $("#userNumber"),
+            calendarInput = $("#dateOfBirthInput"),
 
     subjectsInput = $("#subjectsInput"),
-
-
     hobbiesSelector = $("#hobbiesWrapper"),
-
     uploadPictureInput = $("#uploadPicture"),
-
-    CurrentAddressInput = $("#currentAddress"), selectState = $("#react-select-3-input"), selectCity = $("#react-select-4-input"), buttonSendForm = $("#submit"),
+    CurrentAddressInput = $("#currentAddress"),
+    selectState = $("#react-select-3-input"),
+    selectCity = $("#react-select-4-input"),
+    buttonSendForm = $("#submit"),
 
     tableClass = $(".table-responsive");
 
