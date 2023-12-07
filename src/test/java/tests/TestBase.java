@@ -7,7 +7,6 @@ import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -16,13 +15,12 @@ public class TestBase {
 
 
     @BeforeAll
-    @Tag("remote-tests")
     static void beforeAllRemote() {
-        Configuration.remote = "https://user1:1234@" + System.getProperty("selenoid_url", "selenoid.autotests.cloud/wd/hub");
-        Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
+        Configuration.remote = "https://user1:1234@" + System.getProperty("selenoid", "selenoid.autotests.cloud/wd/hub");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browser = System.getProperty("browser", "firefox");
+        Configuration.browserVersion = System.getProperty("browserVersion", "98.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -34,7 +32,6 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
     @AfterEach
-    @Tag("remote-tests")
     void afterTestsRemote() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
