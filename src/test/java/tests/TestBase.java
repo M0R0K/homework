@@ -16,11 +16,11 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAllRemote() {
-        Configuration.remote = "https://user1:1234@" + System.getProperty("selenoid_url", "selenoid.autotests.cloud/wd/hub");
-        Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty(" browser_version", "100.0");
-        Configuration.browserSize = System.getProperty(" browser_size", "1920x1080");
+        Configuration.remote = "https://user1:1234@" + System.getProperty("selenoid", "selenoid.autotests.cloud/wd/hub");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browser = System.getProperty("browser", "opera");
+        Configuration.browserVersion = System.getProperty(" version", "100.0");
+        Configuration.browserSize = System.getProperty(" windowSize", "1280x1024");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -37,6 +37,8 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+        Selenide.clearBrowserCookies();
+        Selenide.clearBrowserLocalStorage();
         Selenide.closeWebDriver();
     }
 
