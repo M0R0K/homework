@@ -132,7 +132,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        step("Проверяем правильность заполнения " + key + " в таблице", () -> {
+        step(key + " в таблице должен содержать значение: "+ value, () -> {
             TableComponent.checkResult(key, value);
         });
         return this;
