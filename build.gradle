@@ -51,3 +51,15 @@ task remote_tests(type: Test) {
         includeTags("remote-tests")
     }
 }
+
+task positive_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("positive")
+    }
+}
+
+task negative_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("negative")
+    }
+}

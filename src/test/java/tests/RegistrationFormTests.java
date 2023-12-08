@@ -1,11 +1,14 @@
 package tests;
 
 import data.TestData;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-
+@DisplayName("Заполнение формы DemoQA и проверка правильности заполнения")
+@Tag("remote-tests")
 public class RegistrationFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -23,7 +26,12 @@ public class RegistrationFormTests extends TestBase {
     String picturePath = "picture.png";
 
     @Test
-    @Tag("remote-tests")
+    @Feature("Заполнение формы")
+    @Story("Успешное заполнение формы")
+    @Owner("Konstantin Ponomarenko")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Заполнение всех полей в форме и проверка их отображения в таблице")
+    @Tag("positive")
     void fillFormTest() {
         registrationPage.openPage()
                 .setFirstName(data.firstName)
@@ -56,7 +64,12 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
-    @Tag("remote-tests")
+    @Feature("Заполнение формы")
+    @Story("Успешное заполнение формы только с обязательными полями")
+    @Owner("Konstantin Ponomarenko")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Заполнение всех обязательных полей в форме и проверка их отображения в таблице")
+    @Tag("positive")
     void inputMinimumData() {
         registrationPage.openPage()
                 .setFirstName(data.firstName)
@@ -71,7 +84,12 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
-    @Tag("remote-tests")
+    @Feature("Заполнение формы")
+    @Story("Валидация формы")
+    @Owner("Konstantin Ponomarenko")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Cохранение формы без заполненных данных, таблица не появляется, есть валидация")
+    @Tag("negative")
     void negativeScenario() {
         registrationPage.openPage()
                 .sendForm()
