@@ -7,9 +7,14 @@ repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.21.0",
-    selenideVersion = "6.19.1"
-
+def     slf4jVersion = "2.0.9",
+        junitVersion = "5.10.1",
+        selenideVersion = "6.19.1",
+        javaFakerVersion = "1.0.2",
+        jschVersion = "0.1.55",
+        allureVersion = "2.24.0",
+        ownerVersion = "1.0.12",
+        webDriverManagerVersion = "5.6.2"
 allure {
     report {
         version.set(allureVersion)
@@ -26,12 +31,16 @@ allure {
 
 dependencies {
     testImplementation(
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
             "com.codeborne:selenide:$selenideVersion",
+            "com.github.javafaker:javafaker:$javaFakerVersion",
+            "com.jcraft:jsch:$jschVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            'org.slf4j:slf4j-simple:2.0.7',
-            'com.github.javafaker:javafaker:1.0.2'
-    )
+            "org.aeonbits.owner:owner:$ownerVersion",
+            "io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
+    testRuntimeOnly (
+            "org.slf4j:slf4j-simple:$slf4jVersion")
 }
 
 tasks.withType(Test) {
